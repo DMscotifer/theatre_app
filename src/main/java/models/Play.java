@@ -1,18 +1,28 @@
 package models;
 
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+@Table(name="plays")
 public class Play {
 
     private int id;
     private String title;
     private Author author;
     private double duration;
+    private Theatre venue;
 
-    public Play(String title, Author author, double duration) {
+    public Play(String title, Author author, double duration, Theatre venue) {
         this.title = title;
         this.author = author;
         this.duration = duration;
+        this.venue = venue;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -21,6 +31,7 @@ public class Play {
         this.id = id;
     }
 
+    @Column(name="title")
     public String getTitle() {
         return title;
     }
@@ -29,6 +40,8 @@ public class Play {
         this.title = title;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "author", nullable = false)
     public Author getAuthor() {
         return author;
     }
@@ -37,6 +50,7 @@ public class Play {
         this.author = author;
     }
 
+    @Column(name="duration")
     public double getDuration() {
         return duration;
     }
@@ -44,4 +58,15 @@ public class Play {
     public void setDuration(double duration) {
         this.duration = duration;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "theatre", nullable = false)
+    public Theatre getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Theatre venue) {
+        this.venue = venue;
+    }
+
 }

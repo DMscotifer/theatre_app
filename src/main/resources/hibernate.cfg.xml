@@ -14,5 +14,6 @@
         <mapping class="models.Author" />
         <mapping class="models.Play" />
         <mapping class="models.Theatre"/>
+        <mapping class="models.Actor"/>
     </session-factory>
 </hibernate-configuration>
