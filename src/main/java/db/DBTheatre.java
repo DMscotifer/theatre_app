@@ -34,7 +34,9 @@ public class DBTheatre {
 
     public static void addPlayToShows(Theatre theatre, Play play){
         theatre.addPlayToShows(play);
+        play.setVenue(theatre);
         DBHelper.save(theatre);
+        DBHelper.save(play);
     }
 
 

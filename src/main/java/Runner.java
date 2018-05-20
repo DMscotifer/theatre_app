@@ -14,9 +14,6 @@ public class Runner {
         Theatre theatre = new Theatre("The Pavilion");
         DBHelper.save(theatre);
 
-        Actor actor1 = new Actor("Sean Bean");
-        DBHelper.save(actor1);
-
         Author author1 = new Author("William Shakespeare", 20000.00);
         DBHelper.save(author1);
 
@@ -26,13 +23,18 @@ public class Runner {
         Play play2 = new Play("The Tempest", author1, 100, theatre);
         DBHelper.save(play2);
 
+        Actor actor1 = new Actor("Sean Bean");
+        DBHelper.save(actor1);
+
         DBTheatre.addPlayToShows(theatre, play1);
 
         List<Play> showsAtPavilion = DBTheatre.getShowsFromTheatre(theatre);
 
         List<Play> allShows = DBHelper.getAll(Play.class);
 
+        List<Actor> allActors = DBHelper.getAll(Actor.class);
 
+        List<Theatre> allTheatres = DBHelper.getAll(Theatre.class);
     }
 
 }
